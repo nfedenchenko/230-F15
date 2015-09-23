@@ -29,17 +29,18 @@ public class ArrayBag<T> implements BagInterface<T> {
 
 	@Override
 	public boolean add(T newEntry) {
-		boolean isAdded = false;
 		
 		if (!isArrayFull()) {
 			bag[numEntries] = newEntry;
+			numEntries++;
+			return true;
 		}
 		
-		return isAdded;
+		return false;
 	}
 
 	private boolean isArrayFull() {
-		return numEntries <= bag.length;
+		return numEntries >= bag.length;
 	}
 
 	@Override
@@ -50,7 +51,17 @@ public class ArrayBag<T> implements BagInterface<T> {
 
 	@Override
 	public boolean remove(T anEntry) {
-		// TODO Auto-generated method stub
+		// loop through the bag
+		for (int i = 0; i < numEntries; i++) {
+			// compare item to anEntry
+			if (bag[i].equals(anEntry)) {
+				// remove it
+				bag[i] = bag[numEntries-1];
+				numEntries--;
+				bag[numEntries] = null; //optional
+				return true;
+			}
+		}
 		return false;
 	}
 
@@ -74,13 +85,32 @@ public class ArrayBag<T> implements BagInterface<T> {
 
 	@Override
 	public T[] toArray() {
-		// TODO Auto-generated method stub
-		return null;
+		T[] result = (T[])new Object[numEntries];
+		for (int i = 0; i < numEntries; i++)
+			result[i] = bag[i];
+		return result;
 	}
 	
+	public String toString() {
+		String s = "";
+		for (T item : this.toArray())
+			s += item.toString() + " ";
+		return s;
+	}
+	
+	// Client to test our implementation
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		BagInterface<String> b = new ArrayBag<String>();
+		b.add("orange");
+		for (int i = 0; i < 10; i++) {
+			if (!b.add("apple"))
+				System.err.println("Oops, bag full! " + i);
+		}
+		System.out.println(b);
+		b.remove("orange");
+		System.out.println(b);
+		/*for ( Object entry : b.toArray() )
+			System.out.println((String)entry);*/
 	}
 
 }
