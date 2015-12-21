@@ -7,32 +7,39 @@ public class LinkedStack<T> implements Stack<T> {
 	
 	@Override
 	public void push(T newEntry) {
-		// TODO Auto-generated method stub
+		Node n = new Node(newEntry);
+	    n.next = top;
+	    top = n;
 		
 	}
 
 	@Override
 	public T pop() {
-		// TODO Auto-generated method stub
+		while(!isEmpty()){
+		top = top.next;}
 		return null;
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
+		Node current = top;
+	    while (current != null) {
+	        System.out.print(current);
+	        System.out.print("	");
+	        current = current.next;
+	    }
 		return null;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+		top = null;
 	}
 	
 	public String toString() {

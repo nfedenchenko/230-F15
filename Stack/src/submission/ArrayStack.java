@@ -8,19 +8,33 @@ public class ArrayStack<T> implements Stack<T> {
 
 	@Override
 	public void push(T newEntry) {
-		// TODO Auto-generated method stub
-		
+		 if(top==data.length-1){
+	            System.out.println("Stack is full, can't push");
+	        }
+	        else{
+
+	            top=top+1;
+	            data[top]=newEntry;
+	        }
 	}
 
 	@Override
 	public T pop() {
-		// TODO Auto-generated method stub
+		if(!isEmpty())
+            top=top-1;
+        else{
+            System.out.println("Stack is empty");
+        }
 		return null;
 	}
 
 	@Override
 	public T peek() {
-		// TODO Auto-generated method stub
+		 for(int i=0;i<=top;i++){
+	            System.out.print(data[i]+ " ");
+	        }
+	        System.out.println();
+	    
 		return null;
 	}
 
@@ -32,7 +46,8 @@ public class ArrayStack<T> implements Stack<T> {
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < data.length; i++)
+		    data[i] = null;
 		
 	}
 	

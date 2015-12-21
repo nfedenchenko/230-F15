@@ -7,9 +7,20 @@ public class RecursiveUnsortedArraySearcher {
 	}
 	
 	// TODO: Implement this one
-	private static int search(int[] a, int key, int endIndex) {
-		// Returns the index of the key or
-		// -1 if not found
+	private static int search(int[] a, int key, int endIndex, int start) {
+		 if (start < endIndex) {
+	            int mid = start + (endIndex - start) / 2; 
+	            if (key < a[mid]) {
+	                return search(a, key, mid, endIndex);
+	                 
+	            } else if (key > sortedArray[mid]) {
+	                return recursiveBinarySearch(a, key, end , mid+1);
+	                 
+	            } else {
+	                return mid;  
+	            }
+	        }
+	        return -(start + 1); 
 		return -1;
 	}
 }
