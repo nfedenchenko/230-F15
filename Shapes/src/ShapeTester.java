@@ -23,6 +23,7 @@ public class ShapeTester {
 		shapes.add(triangle);
 		
 		for (Shape shape : shapes) {
+
 			String s = 	"---------- "+ shape.getClass() +" --------- \n";
 			
 			s +=			"Side Length: " + shape.getSideLength()+"\n";

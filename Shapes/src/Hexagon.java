@@ -1,7 +1,7 @@
 
 public class Hexagon implements Shape {
 	
-	private double sideLength;
+	private double sideLength = 3;
 	private int numsides = 6;
 	
 	public double getWidth() {
